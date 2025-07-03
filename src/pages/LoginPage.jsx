@@ -9,7 +9,7 @@ const LoginPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    // Add login logic here
+   
     try {
       const response = await fetch('http://localhost:3000/auth/login', {
         method: 'POST',
