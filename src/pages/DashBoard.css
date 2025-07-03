@@ -7,7 +7,7 @@ html, body {
 .dashboard-container {
   margin: 0;
   padding: 0px;
-  background-color: #ffffff; /* Clean white card container */
+  background-color: #f6ecec; /* Clean white card container */
   color: #111827; /* Very dark gray for card text */
   min-width: 100vw;
   min-height: 100vh;

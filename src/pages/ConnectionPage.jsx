@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ConnectionPage.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ConnectionPage = () => {
     const [connections, setConnections] = useState([]);
@@ -9,16 +11,18 @@ const ConnectionPage = () => {
     useEffect(() => {
         const fetchConnections = async () => {
             try {
-                const token = localStorage.getItem('token');
-                const res = await axios.get('http://localhost:3000/user/connections', {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                setConnections(res.data.data);
-                setLoading(false);
+            const token = localStorage.getItem('token');
+            const res = await axios.get('http://localhost:3000/user/connections', {
+                headers: {
+                Authorization: `Bearer ${token}`,
+                },
+            });
+            setConnections(res.data.data);
+            setLoading(false);
+            toast.success("Connections loaded successfully");
             } catch (err) {
-                setLoading(false);
+            setLoading(false);
+            toast.error("Failed to load connections");
             }
         };
         fetchConnections();

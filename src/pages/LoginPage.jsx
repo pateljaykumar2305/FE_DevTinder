@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
-import './LoginPage.css'; // Assuming you have some CSS for styling
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './LoginPage.css';
 
 const LoginPage = () => {
-  const navigate = useNavigate(); // Move this inside the component
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -21,26 +23,24 @@ const LoginPage = () => {
       });
   
       const data = await response.json();
-      console.log('Login response:', data); // Debugging line
+      console.log('Login response:', data);
 
-    
       if (response.ok) {
-        // Store token/user info
         localStorage.setItem('token', data.token);
-       
-        // Navigate to homepage or dashboard
-        navigate('/dashboard'); // Uncomment this line
+        toast.success('Login successful!');
+        setTimeout(() => navigate('/dashboard'), 1500);
       } else {
-        alert(data.message || 'Login failed');
+        toast.error(data.message || 'Login failed');
       }
     } catch (error) {
       console.error('Login error:', error);
-      alert('Something went wrong. Try again later.');
+      toast.error('Something went wrong. Try again later.');
     }
   };
 
   return (
     <>
+      <ToastContainer position="top-right" autoClose={2000} />
       <div className="login-container">
         <form onSubmit={handleLogin} className="login-form">
           <h1 style={{ textAlign: 'center', color: '#FF5722', fontSize: '2.5rem', fontWeight: 'bold' }}>🔥 DevTinder</h1>

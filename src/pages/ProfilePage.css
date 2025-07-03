@@ -2,7 +2,7 @@
 .profile-sidebar label,
 .profile-section-title,
 .profile-field label {
-    color: #111827;
+    color: #386ddf;
 }
 
 .profile-sidebar input[type="password"],
@@ -11,6 +11,7 @@
 .profile-field textarea {
     color: #111827;
 }
+
 /* Modern, clean, beautiful profile page styles */
 
 body {
@@ -27,7 +28,6 @@ body {
 }
 
 .navbar {
-  
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,7 +64,8 @@ body {
     box-shadow: 0 2px 8px rgba(56,189,248,0.08);
 }
 
-.navbar-btn:hover {
+.navbar-btn:hover,
+.profile-edit-btn:hover {
     background: #0ea5e9;
 }
 
@@ -77,166 +78,158 @@ h1 {
     letter-spacing: 1px;
 }
 
+/* ...existing code... */
+/* ...existing code... */
+
 .profile-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
-    gap: 48px;
-    max-width: 800px;
+    gap: 36px;
+    max-width: 900px;
     margin: 0 auto;
     background: #fff;
-    border-radius: 18px;
+    border-radius: 28px;
     box-shadow: 0 4px 32px rgba(30,41,59,0.10);
-    padding: 40px 32px;
+    padding: 48px 40px;
+    position: relative;
 }
 
 .profile-details {
     flex: 2;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 22px;
+    min-width: 0;
 }
 
 .profile-details p {
-    margin: 0 0 8px 0;
-    font-size: 1.08rem;
+    margin: 0;
+    font-size: 1.15rem;
     color: #334155;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 18px;
+    word-break: break-word;
 }
 
 .profile-details b {
-    color: #0ea5e9;
-    min-width: 70px;
-    font-weight: 600;
+    color: #38bdf8;
+    min-width: 120px;
+    font-weight: 700;
+    text-align: left;
+    font-size: 1.08rem;
+    letter-spacing: 0.5px;
 }
 
 .profile-details input,
 .profile-details select {
-    padding: 8px 12px;
-    border: 1.5px solid #e5e7eb;
+    flex: 1;
+    padding: 10px 14px;
+    border: none;
     border-radius: 7px;
-    font-size: 1rem;
-    margin-left: 8px;
-    background: #000000;
-    transition: border 0.2s;
+    background: #f1f5f9;
+    color: #222;
+    font-size: 1.08rem;
+    box-shadow: 0 1px 2px rgba(30,41,59,0.04);
     outline: none;
+    margin-left: 0;
+    margin-right: 0;
+    transition: box-shadow 0.2s, border 0.2s;
 }
 
 .profile-details input:focus,
 .profile-details select:focus {
-    border-color: #0b5d80;
-    background: #0a0909;
+    border: 1.5px solid #38bdf8;
+    background: #e0f2fe;
+}
+
+.profile-details a {
+    color: #38bdf8;
+    word-break: break-all;
+    text-decoration: underline;
+    font-size: 0.98rem;
+    margin-left: 0;
+}
+
+.profile-photo {
+    flex: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-width: 180px;
+    margin-top: 8px;
+}
+
+.profile-img {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #38bdf8;
+    box-shadow: 0 4px 24px rgba(56,189,248,0.12);
+    background: #f1f5f9;
+    display: block;
 }
 
 .profile-edit-btn,
 .profile-save-btn {
-    margin-top: 18px;
-    padding: 10px 28px;
-    border-radius: 8px;
-    border: none;
-    font-size: 1.08rem;
+    width: 96%;
+    margin: 32px auto 0 auto;
+    display: block;
+    background: #111;
+    color: #fff;
+    border: 2px solid #38bdf8;
+    border-radius: 12px;
+    padding: 14px 0;
+    font-size: 1.25rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    transition: background 0.2s, border 0.2s;
     box-shadow: 0 2px 8px rgba(56,189,248,0.08);
+    letter-spacing: 1px;
 }
 
-.profile-edit-btn {
-    background: #38bdf8;
-    color: #fff;
-}
-
-/* Style for the profile photo URL image */
-.profile-photo-url {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #38bdf8;
-    box-shadow: 0 2px 12px rgba(56,189,248,0.10);
-    background: #f1f5f9;
-    display: block;
-    margin: 0 auto;
-}
-
-/* Style for the photo URL input when editing */
-input[name="photoURL"] {
-    width: 100%;
-    max-width: 320px;
-    padding: 8px 12px;
-    border: 1.5px solid #e5e7eb;
-    border-radius: 7px;
-    font-size: 1rem;
-    margin-left: 8px;
-    background: #f9fafb;
-    color: #111827;
-    transition: border 0.2s;
-    outline: none;
-}
-
-input[name="photoURL"]:focus {
-    border-color: #38bdf8;
-    background: #fff;
-}
-
-.profile-edit-btn:hover {
-    background: #0ea5e9;
-}
-
-.profile-save-btn {
-    background: #10b981;
-    color: #fff;
-}
-
+.profile-edit-btn:hover,
 .profile-save-btn:hover {
-    background: #059669;
-}
-
-.profile-photo {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.profile-img {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #38bdf8;
-    box-shadow: 0 4px 24px rgba(56,189,248,0.12);
-    background: #f1f5f9;
+    background: #222;
+    border-color: #0ea5e9;
 }
 
 @media (max-width: 900px) {
     .profile-container {
         flex-direction: column-reverse;
         align-items: center;
-        padding: 28px 12px;
+        padding: 28px 8px;
         gap: 24px;
     }
     .profile-photo {
         margin-bottom: 12px;
+        min-width: 0;
+    }
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+    .profile-details b {
+        min-width: 90px;
     }
 }
 
 @media (max-width: 600px) {
-    .navbar {
-        flex-direction: column;
-        gap: 12px;
-        padding: 14px 8px;
-    }
     .profile-container {
-        padding: 14px 2px;
+        padding: 12px 2px;
     }
     .profile-img {
-        width: 110px;
-        height: 110px;
+        width: 90px;
+        height: 90px;
     }
     h1 {
         font-size: 1.3rem;
+    }
+    .profile-edit-btn,
+    .profile-save-btn {
+        width: 100%;
+        margin-right: 0;
     }
 }

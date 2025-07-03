@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./SignUpPages.css";
 
-axios.defaults.baseURL = "http://localhost:3000"; // Update to match your backend's actual URL
+axios.defaults.baseURL = "http://localhost:3000";
 axios.defaults.withCredentials = true;
 
 const SignUpPage = () => {
@@ -20,7 +22,7 @@ const SignUpPage = () => {
         gender: "",
     });
 
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -29,14 +31,22 @@ const SignUpPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        // Validation
+        if (!formData.firstName) return toast.error("First Name is required");
+        if (!formData.lastName) return toast.error("Last Name is required");
+        if (!formData.email) return toast.error("Email is required");
+        if (!formData.password) return toast.error("Password is required");
+        if (!formData.age) return toast.error("Age is required");
+        if (!formData.gender) return toast.error("Gender is required");
+
         axios
         .post("/auth/signup", formData)
         .then((res) => {
-          console.log("Signup successful:", res.data);
-          navigate("/"); // Redirect to login page
+          toast.success("Signup successful!");
+          setTimeout(() => navigate("/"), 2000);
         })
         .catch((err) => {
-          console.error("Signup failed:", err.response?.data || err.message);
+          toast.error(err.response?.data?.message || "Signup failed");
         });
     };
 
@@ -52,7 +62,6 @@ const SignUpPage = () => {
                         placeholder="First Name"
                         value={formData.firstName}
                         onChange={handleChange}
-                        required
                     />
                     <input
                         type="text"
@@ -60,7 +69,6 @@ const SignUpPage = () => {
                         placeholder="Last Name"
                         value={formData.lastName}
                         onChange={handleChange}
-                        required
                     />
                     <input
                         type="email"
@@ -68,7 +76,6 @@ const SignUpPage = () => {
                         placeholder="Email"
                         value={formData.email}
                         onChange={handleChange}
-                        required
                     />
                     <input
                         type="password"
@@ -76,7 +83,6 @@ const SignUpPage = () => {
                         placeholder="Password"
                         value={formData.password}
                         onChange={handleChange}
-                        required
                     />
                     <input
                         type="text"
@@ -112,13 +118,11 @@ const SignUpPage = () => {
                         placeholder="Age"
                         value={formData.age}
                         onChange={handleChange}
-                        required
                     />
                     <select
                         name="gender"
                         value={formData.gender}
                         onChange={handleChange}
-                        required
                     >
                         <option value="">Select Gender</option>
                         <option value="male">Male</option>
@@ -134,6 +138,7 @@ const SignUpPage = () => {
                     </p>
                 </div>
             </form>
+            <ToastContainer position="top-right" autoClose={2000} />
         </div>
     );
 };

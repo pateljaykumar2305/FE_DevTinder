@@ -6,6 +6,7 @@ import DashBoard from "./pages/DashBoard";
 import ProfilePage from "./pages/ProfilePage";
 import RequestPage from "./pages/RequestPage";
 import ConnectionPage from "./pages/ConnectionPage";
+import ChangePasswordPage from "./pages/ChangePasswordPage";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
         <Route path="/profilepage" element={<ProfilePage />} />
         <Route path="/requestpage" element={<RequestPage />} />
         <Route path="/connectionpage" element={<ConnectionPage />} />
+        <Route path="/changepassword" element={<ChangePasswordPage />} />
+                    
         <Route path="*" element={<LoginPage />} />
       </Routes>
     </Router>
