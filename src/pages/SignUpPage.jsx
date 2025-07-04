@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./SignUpPages.css";
 
-axios.defaults.baseURL = `${import.meta.env.VITE_API_BASE_URL}`
+axios.defaults.baseURL = `https://devtinder-1-8u6r.onrender.com`
 axios.defaults.withCredentials = true;
 
 const SignUpPage = () => {
