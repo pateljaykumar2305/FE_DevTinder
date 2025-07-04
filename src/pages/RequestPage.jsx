@@ -38,7 +38,7 @@ const RequestPage = () => {
         if (!request) return;
         const fromUserID = request.fromUserID._id;
         const token = localStorage.getItem('token');
-        const url = `http://localhost:3000/request/view/${action === 'accept' ? 'accepted' : 'rejected'}/${fromUserID}`;
+        const url = `${import.meta.env.VITE_API_BASE_URL}/request/view/${action === 'accept' ? 'accepted' : 'rejected'}/${fromUserID}`;
         try {
             await axios.post(url, {}, {
                 headers: {
@@ -46,7 +46,7 @@ const RequestPage = () => {
                 },
             });
             // Refresh requests after action
-            const res = await axios.get('http://localhost:3000/user/request/received', {
+            const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/user/request/received`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

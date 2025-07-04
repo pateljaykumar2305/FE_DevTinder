@@ -22,7 +22,7 @@ const Dashboard = () => {
             try {
                 const token = localStorage.getItem('token');
                 console.log('Fetching suggestions with token:', token);
-                const res = await axios.get('http://localhost:3000/user/suggestions', {
+                const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/user/suggestions`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
