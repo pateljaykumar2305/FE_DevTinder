@@ -21,12 +21,14 @@ const Dashboard = () => {
         const fetchSuggestions = async () => {
             try {
                 const token = localStorage.getItem('token');
+                console.log('Fetching suggestions with token:', token);
                 const res = await axios.get('http://localhost:3000/user/suggestions', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 });
                 setSuggestions(res.data.data);
+                console.log('Suggestions fetched:', res.data.data);
             } catch (err) {
                 console.error('Error fetching suggestions:', err.message);
             }
@@ -82,7 +84,30 @@ const Dashboard = () => {
                 {menuOpen && (
                     <div className="dropdown-menu" ref={menuRef}>
                         <div className="dropdown-header">
-                            Welcome 
+                         
+                            {(() => {
+                                // Try to get user info from localStorage or suggestions
+                                let username = '';
+                                // Try to get user info from localStorage (token-based)
+                                const userStr = localStorage.getItem('user');
+                                if (userStr) {
+                                    try {
+                                        const userObj = JSON.parse(userStr);
+                                        username = userObj?.name || userObj?.username || '';
+                                    } catch (e) {
+                                        username = '';
+                                    }
+                                }
+                                // Fallback: Try to get from currentUser (not suggestions[0])
+                                if (!username && currentUser) {
+                                    username = currentUser.name || currentUser.username || '';
+                                }
+                                return (
+                                    <span>
+                                        Welcome {username ? username : 'UserJay'}
+                                    </span>
+                                );
+                            })()}
                         </div>
                         <ul>
                             <li onClick ={handleProfile}>Profile <span className="new-badge">New</span></li>
