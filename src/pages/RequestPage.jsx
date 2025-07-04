@@ -12,6 +12,7 @@ const RequestPage = () => {
         const fetchRequests = async () => {
             try {
                 const token = localStorage.getItem('token');
+                console.log("Fetching requests with token:", token);
                 const res = await axios.get('https://devtinder-1-8u6r.onrender.com/user/request/received', {
                     headers: {
                         Authorization: `Bearer ${token}`,

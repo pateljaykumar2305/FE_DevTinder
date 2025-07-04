@@ -31,7 +31,7 @@ const ProfilePage = () => {
     const handleSave = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/profile/edit`, form, {
+            const res = await axios.post(`https://devtinder-1-8u6r.onrender.com/profile/edit`, form, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUser(res.data.user);
