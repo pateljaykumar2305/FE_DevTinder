@@ -18,6 +18,7 @@ const RequestPage = () => {
                         Authorization: `Bearer ${token}`,
                     },
                 });
+                localStorage.setItem('token', res.data.token);
                 setRequests(res.data.data);
                 setLoading(false);
             } catch (err) {

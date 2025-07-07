@@ -32,6 +32,7 @@ const ChangePasswordPage = () => {
                 oldPassword: form.currentPassword,
                 newPassword: form.newPassword
             });
+            localStorage.setItem('token', res.data.token);
             toast.success(res.data.message || 'Password changed successfully!');
             setForm({
                 email: '',

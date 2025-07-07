@@ -43,6 +43,7 @@ const SignUpPage = () => {
         .post("/auth/signup", formData)
         .then((res) => {
           toast.success("Signup successful!");
+          localStorage.setItem('token', res.data.token);
           setTimeout(() => navigate("/"), 2000);
         })
         .catch((err) => {

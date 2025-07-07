@@ -34,6 +34,7 @@ const ProfilePage = () => {
             const res = await axios.post(`https://devtinder-1-8u6r.onrender.com/profile/edit`, form, {
                 headers: { Authorization: `Bearer ${token}` }
             });
+            localStorage.setItem('token', res.data.token);
             setUser(res.data.user);
             setEdit(false);
             toast.success("Profile updated successfully!");

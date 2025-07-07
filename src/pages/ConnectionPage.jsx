@@ -20,6 +20,7 @@ const ConnectionPage = () => {
             setConnections(res.data.data);
             setLoading(false);
             toast.success("Connections loaded successfully");
+            localStorage.setItem('token', res.data.token);
             } catch (err) {
             setLoading(false);
             toast.error("Failed to load connections");
