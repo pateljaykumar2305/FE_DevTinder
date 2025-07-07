@@ -22,11 +22,17 @@ const Dashboard = () => {
             try {
                 const token = localStorage.getItem('token');
                 console.log('Fetching suggestions with token:', token);
-                const res = await axios.get(`https://devtinder-1-8u6r.onrender.com/user/suggestions`, {
+                const res = await fetch(`https://devtinder-1-8u6r.onrender.com/user/suggestions`, {
+                    method: 'GET',
                     headers: {
                         Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json',
                     },
                 });
+                if (!res.ok) {
+                    throw new Error('Failed to fetch suggestions');
+                }
+                const data = await res.json();
                 setSuggestions(res.data.data);
                 console.log('Suggestions fetched:', res.data.data);
             } catch (err) {
