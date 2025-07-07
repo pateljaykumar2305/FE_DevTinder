@@ -34,7 +34,7 @@ const Dashboard = () => {
                     throw new Error('Failed to fetch suggestions');
                 }
                 const data = await res.json();
-                localStorage.setItem('token', res.data.token);
+                localStorage.setItem('token', data.token);
                 setSuggestions(res.data.data);
                 console.log('Suggestions fetched:', res.data.data);
             } catch (err) {
