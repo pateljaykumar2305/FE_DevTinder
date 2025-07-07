@@ -35,6 +35,7 @@ const Dashboard = () => {
                 }
                 const data = await res.json();
                 localStorage.setItem('token', data.token);
+                console.log('token set in localStorage:', data.token);
                 setSuggestions(res.data.data);
                 console.log('Suggestions fetched:', res.data.data);
             } catch (err) {
