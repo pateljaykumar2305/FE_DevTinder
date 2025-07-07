@@ -24,6 +24,7 @@ const Dashboard = () => {
                 console.log('Fetching suggestions with token:', token);
                 const res = await fetch(`https://devtinder-1-8u6r.onrender.com/user/suggestions`, {
                     method: 'GET',
+                    credentials: 'include',
                     headers: {
                         Authorization: `Bearer ${token}`,
                         'Content-Type': 'application/json',
