@@ -13,7 +13,7 @@ const RequestPage = () => {
             try {
                 const token = localStorage.getItem('token');
                 console.log("Fetching requests with token:", token);
-                const res = await axios.get('http://localhost:5173/user/request/received', {
+                const res = await axios.get('http://localhost:3000/user/request/received', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

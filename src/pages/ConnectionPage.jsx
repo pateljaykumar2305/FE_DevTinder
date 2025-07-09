@@ -12,7 +12,7 @@ const ConnectionPage = () => {
         const fetchConnections = async () => {
             try {
             const token = localStorage.getItem('token');
-            const res = await axios.get(`http://localhost:5173/user/connections`, {
+            const res = await axios.get(`http://localhost:3000/user/connections`, {
                 headers: {
                 Authorization: `Bearer ${token}`,
                 },

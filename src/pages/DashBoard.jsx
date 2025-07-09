@@ -22,7 +22,7 @@ const Dashboard = () => {
             try {
                 const token = localStorage.getItem('token');
                 console.log('Fetching suggestions with token:', token);
-                const res = await fetch(`http://localhost:5173/user/suggestions`, {
+                const res = await fetch(`http://localhost:3000/user/suggestions`, {
                     method: 'GET',
                     credentials: 'include',
                     headers: {

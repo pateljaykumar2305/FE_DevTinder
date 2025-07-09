@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./SignUpPages.css";
 
-axios.defaults.baseURL = `http://localhost:5173`
+axios.defaults.baseURL = `http://localhost:3000`
 axios.defaults.withCredentials = true;
 
 const SignUpPage = () => {
