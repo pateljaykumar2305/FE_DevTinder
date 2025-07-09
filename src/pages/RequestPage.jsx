@@ -13,7 +13,7 @@ const RequestPage = () => {
             try {
                 const token = localStorage.getItem('token');
                 console.log("Fetching requests with token:", token);
-                const res = await axios.get('https://devtinder-1-8u6r.onrender.com/user/request/received', {
+                const res = await axios.get('http://localhost:5173/user/request/received', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -40,7 +40,7 @@ const RequestPage = () => {
         if (!request) return;
         const fromUserID = request.fromUserID._id;
         const token = localStorage.getItem('token');
-        const url = `https://devtinder-1-8u6r.onrender.com/request/view/${action === 'accept' ? 'accepted' : 'rejected'}/${fromUserID}`;
+        const url = `http://localhost:5173/request/view/${action === 'accept' ? 'accepted' : 'rejected'}/${fromUserID}`;
         try {
             await axios.post(url, {}, {
                 headers: {
@@ -48,7 +48,7 @@ const RequestPage = () => {
                 },
             });
             // Refresh requests after action
-            const res = await axios.get(`https://devtinder-1-8u6r.onrender.com/user/request/received`, {
+            const res = await axios.get(`http://localhost:5173/user/request/received`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

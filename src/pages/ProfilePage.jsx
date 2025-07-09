@@ -12,7 +12,7 @@ const ProfilePage = () => {
     useEffect(() => {
         const fetchUser = async () => {
             const token = localStorage.getItem('token');
-            const res = await axios.get('https://devtinder-1-8u6r.onrender.com/profile/view', {
+            const res = await axios.get('http://localhost:5173/profile/view', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUser(res.data.user);
@@ -31,7 +31,7 @@ const ProfilePage = () => {
     const handleSave = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.post(`https://devtinder-1-8u6r.onrender.com/profile/edit`, form, {
+            const res = await axios.post(`http://localhost:5173/profile/edit`, form, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             localStorage.setItem('token', res.data.token);

@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./SignUpPages.css";
 
-axios.defaults.baseURL = `https://devtinder-1-8u6r.onrender.com`
+axios.defaults.baseURL = `http://localhost:5173`
 axios.defaults.withCredentials = true;
 
 const SignUpPage = () => {
@@ -43,7 +43,6 @@ const SignUpPage = () => {
         .post("/auth/signup", formData)
         .then((res) => {
           toast.success("Signup successful!");
-          localStorage.setItem('token', res.data.token);
           setTimeout(() => navigate("/"), 2000);
         })
         .catch((err) => {
